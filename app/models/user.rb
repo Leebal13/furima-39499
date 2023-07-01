@@ -1,7 +1,4 @@
 class User < ApplicationRecord
-  has_many :purchases
-  has_many :items
-  has_one :addresses
   validates :email, presence: true, uniqueness: true
   validates :nickname, presence: true
   validates :password, presence: true
