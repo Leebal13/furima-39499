@@ -26,23 +26,24 @@
 | detail_condition_id | integer    | null: false |
 | delivery_format_id  | integer    | null: false |
 | region_id           | integer    | null: false |
-| days_id             | integer    | null: false |
+| arrival_id          | integer    | null: false |
 | price               | integer    | null: false |
 | user                | references | null: false |
 
 - belongs_to :user
-- has_many :purchases
+- has_one :purchase
 
 ## addresses
 
-| Column       | Type    | Options     |
-| ------------ | ------- | ----------- |
-| postal_code  | string  | null: false |
-| region_id    | integer | null: false |
-| city         | string  | null: false |
-| address_no   | string  | null: false |
-| building_no  | string  |             |
-| phone_number | string  | null: false |
+| Column       | Type       | Options     |
+| ------------ | ---------- | ----------- |
+| postal_code  | string     | null: false |
+| region_id    | integer    | null: false |
+| city         | string     | null: false |
+| address_no   | string     | null: false |
+| building_no  | string     |             |
+| phone_number | string     | null: false |
+| purchase     | references | null: false |
 
 - belongs_to :purchase
 
