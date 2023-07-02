@@ -18,41 +18,41 @@
 
 ## items
 
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| item_name           | string     | null: false |
-| description         | text       | null: false |
-| detail_category_id  | integer    | null: false |
-| detail_condition_id | integer    | null: false |
-| delivery_format_id  | integer    | null: false |
-| region_id           | integer    | null: false |
-| arrival_id          | integer    | null: false |
-| price               | integer    | null: false |
-| user                | references | null: false |
+| Column              | Type       | Options           |
+| ------------------- | ---------- | ----------------- |
+| item_name           | string     | null: false       |
+| description         | text       | null: false       |
+| detail_category_id  | integer    | null: false       |
+| detail_condition_id | integer    | null: false       |
+| delivery_format_id  | integer    | null: false       |
+| region_id           | integer    | null: false       |
+| arrival_id          | integer    | null: false       |
+| price               | integer    | null: false       |
+| user                | references | foreign_key: true |
 
 - belongs_to :user
 - has_one :purchase
 
 ## addresses
 
-| Column       | Type       | Options     |
-| ------------ | ---------- | ----------- |
-| postal_code  | string     | null: false |
-| region_id    | integer    | null: false |
-| city         | string     | null: false |
-| address_no   | string     | null: false |
-| building_no  | string     |             |
-| phone_number | string     | null: false |
-| purchase     | references | null: false |
+| Column       | Type       | Options           |
+| ------------ | ---------- | ----------------- |
+| postal_code  | string     | null: false       |
+| region_id    | integer    | null: false       |
+| city         | string     | null: false       |
+| address_no   | string     | null: false       |
+| building_no  | string     |                   |
+| phone_number | string     | null: false       |
+| purchase     | references | foreign_key: true |
 
 - belongs_to :purchase
 
 ## purchases
 
-| Column | Type       | Options     |
-| ------ | ---------- | ----------- |
-| user   | references | null: false |
-| item   | references | null: false |
+| Column | Type       | Options           |
+| ------ | ---------- | ----------------- |
+| user   | references | foreign_key: true |
+| item   | references | foreign_key: true |
 
 - belongs_to :user
 - has_one :address
