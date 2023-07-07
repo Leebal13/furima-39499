@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品の情報を入力' do
     context '正しい情報が入力された場合' do
-      it '必要な情報を適切に入力して「変更する」ボタンを押すと、商品の情報が更新されること' do
+      it '必要な情報を適切に入力して「出品する」ボタンを押すと、商品の情報が更新されること' do
         expect(@item).to be_valid
       end
 
@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       it '価格が9,999,999を超える場合は更新できないこと' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9_999_999")
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
 
       it '画像が空では更新できないこと' do

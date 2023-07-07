@@ -12,22 +12,22 @@ class Item < ApplicationRecord
 
   validates :item_name, presence: true
   validates :description, presence: true
-  validates :detail_category_id, presence: true
-  validates :detail_condition_id, presence: true
-  validates :delivery_format_id, presence: true
-  validates :region_id, presence: true
-  validates :arrival_id, presence: true
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :detail_category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :detail_condition_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"} 
+  validates :delivery_format_id, presence: true, numericality: { other_than: 1 , message: "can't be blank" } 
+  validates :region_id, presence: true, numericality: { other_than: 1 , message: "can't be blank" } 
+  validates :arrival_id, presence: true, numericality: { other_than: 1 , message: "can't be blank" } 
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validate :valid_half_width_numerical_characters
   validates :image, presence: true
-  validates :title, :text, presence: true
+  # validates :title, :text, presence: true
 
   #ジャンルの選択が「---」の時は保存できないようにする
-  validates :detail_category_id, numericality: { other_than: 1 , message: "can't be blank" } 
-  validates :detail_condition_id, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :delivery_format_id, numericality: { other_than: 1 , message: "can't be blank" } 
-  validates :region_id, numericality: { other_than: 1 , message: "can't be blank" } 
-  validates :arrival_id, numericality: { other_than: 1 , message: "can't be blank" } 
+  # validates :detail_category_id, numericality: { other_than: 1 , message: "can't be blank" } 
+  # validates :detail_condition_id, numericality: { other_than: 1 , message: "can't be blank"} 
+  # validates :delivery_format_id, numericality: { other_than: 1 , message: "can't be blank" } 
+  # validates :region_id, numericality: { other_than: 1 , message: "can't be blank" } 
+  # validates :arrival_id, numericality: { other_than: 1 , message: "can't be blank" } 
 
 
 
