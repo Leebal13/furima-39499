@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "items#index"
-  # resources :users
+  get "items/new", to: "items#new"
+  
+  resources :items
 end

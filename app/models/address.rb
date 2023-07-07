@@ -1,4 +1,4 @@
-class Shipping < ApplicationRecord
+class Address < ApplicationRecord
   # belongs_to :items
   # belongs_to :users
   # belongs_to :purchases
