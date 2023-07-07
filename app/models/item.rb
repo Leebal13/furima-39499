@@ -1,7 +1,14 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   has_one :purchase
   has_one_attached :image
+  belongs_to :detail_category
+  belongs_to :detail_condition
+  belongs_to :delivery_format
+  belongs_to :region
+  belongs_to :arrival
+
 
   validates :item_name, presence: true
   validates :description, presence: true
@@ -10,7 +17,29 @@ class Item < ApplicationRecord
   validates :delivery_format_id, presence: true
   validates :region_id, presence: true
   validates :arrival_id, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validate :valid_half_width_numerical_characters
+  validates :image, presence: true
+  validates :title, :text, presence: true
+
+  #ジャンルの選択が「---」の時は保存できないようにする
+  validates :detail_category_id, numericality: { other_than: 1 , message: "can't be blank" } 
+  validates :detail_condition_id, numericality: { other_than: 1 , message: "can't be blank"} 
+  validates :delivery_format_id, numericality: { other_than: 1 , message: "can't be blank" } 
+  validates :region_id, numericality: { other_than: 1 , message: "can't be blank" } 
+  validates :arrival_id, numericality: { other_than: 1 , message: "can't be blank" } 
+
+
+
+  private
+
+  def valid_half_width_numerical_characters
+    return if price.blank? || price.to_s =~ /\A\d+\z/
+
+    errors.add(:price, "should only allow half-width numerical characters")
+  end
+
+
 
   # Other model logic and methods...
 end
