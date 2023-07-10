@@ -3,8 +3,9 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @item = Item.new
-    @item = Item.find(params[:item_id])
+    @items = Item.all
+    # @item = Item.find(params[:item_id])
+    # @items = Item.inludes(:user)
   end
 
   def move_to_index
@@ -16,11 +17,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
+    # @item = Item.find(params[:item_id])
     @item = Item.new(item_params)
     if @item.save
-      redirect_to @item, notice: 'Item was successfully created.'
+      redirect_to item_path, notice: 'Item was successfully created.'
     else
+      @items = Item.includes(:user)
       render :new, status: :unprocessable_entity
     end
   end
