@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to :user
   # has_one :purchase
   has_one_attached :image
+  # has_one :purchase
   belongs_to :detail_category
   belongs_to :detail_condition
   belongs_to :delivery_format
@@ -20,15 +21,10 @@ class Item < ApplicationRecord
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validate :valid_half_width_numerical_characters
   validates :image, presence: true
-  # validates :title, :text, presence: true
 
-  #ジャンルの選択が「---」の時は保存できないようにする
-  # validates :detail_category_id, numericality: { other_than: 1 , message: "can't be blank" } 
-  # validates :detail_condition_id, numericality: { other_than: 1 , message: "can't be blank"} 
-  # validates :delivery_format_id, numericality: { other_than: 1 , message: "can't be blank" } 
-  # validates :region_id, numericality: { other_than: 1 , message: "can't be blank" } 
-  # validates :arrival_id, numericality: { other_than: 1 , message: "can't be blank" } 
-
+  # def sold_out?
+  #   purchase.present?
+  # end
 
 
   private

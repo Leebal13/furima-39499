@@ -1,6 +1,7 @@
 class Address < ApplicationRecord
-  # belongs_to :items
-  # belongs_to :users
+  # belongs_to :item
+  # belongs_to :user
+  # has_one :address
   # belongs_to :purchases
   # validates :postal_code, presence: true
   # validates :region, presence: true
