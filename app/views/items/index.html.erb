@@ -127,9 +127,10 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
+    <% if @items.present? %>
      <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to item_path(item.id) do %>
+        <%= link_to "#" class: 'item-link' do %>
         <div class='item-img-content'>
           <%= image_tag(item.image, class: "item-img") %>
           <% if item.sold_out? %>
@@ -156,6 +157,8 @@
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
+    <% end %>
+  <% else %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -175,6 +178,7 @@
       </li>
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+  <% end %>
     </ul>
   </div>
   <%# /商品一覧 %>
@@ -184,4 +188,3 @@
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
 <%= render "shared/footer" %>
-<% end %>

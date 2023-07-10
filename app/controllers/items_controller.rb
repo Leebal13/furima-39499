@@ -4,8 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    # @item = Item.find(params[:item_id])
-    # @items = Item.inludes(:user)
+    @items = Item.includes(:user).order(created_at: :desc)
   end
 
   def move_to_index
@@ -20,7 +19,7 @@ class ItemsController < ApplicationController
     # @item = Item.find(params[:item_id])
     @item = Item.new(item_params)
     if @item.save
-      redirect_to item_path, notice: 'Item was successfully created.'
+      redirect_to items_path, notice: 'Item was successfully created.'
     else
       @items = Item.includes(:user)
       render :new, status: :unprocessable_entity
