@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :authenticate_user!, only: [:new, :create, :edit]
-  before_action :set_item, only: [:edit, :update]
+  before_action :set_item, only: [:edit, :update, :show]
 
   def index
     @items = Item.includes(:user).order(created_at: :desc)
@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # @item = Item.find(params[:item_id])
     @item = Item.new(item_params)
     if @item.save
       redirect_to items_path, notice: 'Item was successfully created.'
@@ -27,7 +26,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @item = Item.find(params[:id])
 
     if @item.user != current_user
       redirect_to root_path, alert: "You do not have permission to edit this item."
@@ -35,7 +33,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    # @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -44,7 +41,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   private
