@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   belongs_to :user
   # has_one :purchase
   has_one_attached :image
-  has_one :purchase
+  # has_one :purchase
   belongs_to :detail_category
   belongs_to :detail_condition
   belongs_to :delivery_format
@@ -22,9 +22,9 @@ class Item < ApplicationRecord
   validate :valid_half_width_numerical_characters
   validates :image, presence: true
 
-  def sold_out?
-    purchase.present?
-  end
+  # def sold_out?
+  #   purchase.present?
+  # end
 
 
   private
