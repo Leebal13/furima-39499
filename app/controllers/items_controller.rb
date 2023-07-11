@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index]
+  before_action :move_to_index, except: [:index, :show]
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
@@ -23,6 +23,10 @@ class ItemsController < ApplicationController
       @items = Item.includes(:user)
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   private
