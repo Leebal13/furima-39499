@@ -1,9 +1,8 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
-  # has_one :purchase
+  has_one :purchase
   has_one_attached :image
-  # has_one :purchase
   belongs_to :detail_category
   belongs_to :detail_condition
   belongs_to :delivery_format

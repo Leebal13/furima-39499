@@ -1,0 +1,2 @@
+class Buildno < ApplicationRecord
+end

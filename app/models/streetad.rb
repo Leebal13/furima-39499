@@ -1,0 +1,2 @@
+class Streetad < ApplicationRecord
+end

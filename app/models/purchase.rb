@@ -1,5 +1,6 @@
 class Purchase < ApplicationRecord
-  # belongs_to :users
-  # has_one :addresses
-  # validates :buyer, presence: true
+  belongs_to :user
+  has_one :address
+  belongs_to :item
+  
 end
