@@ -22,11 +22,6 @@ class Item < ApplicationRecord
   validate :valid_half_width_numerical_characters
   validates :image, presence: true
 
-  # def sold_out?
-  #   purchase.present?
-  # end
-
-
   private
 
   def valid_half_width_numerical_characters
@@ -37,5 +32,4 @@ class Item < ApplicationRecord
 
 
 
-  # Other model logic and methods...
 end
