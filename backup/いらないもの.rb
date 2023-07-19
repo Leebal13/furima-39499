@@ -1,0 +1,1 @@
+prefecture: prefecture, address_no: address_no, building_no: building_no,phone_number: phone_number, 
