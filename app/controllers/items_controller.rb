@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  # before_action :move_to_index, except: [:index, :show]
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
 
@@ -7,9 +7,9 @@ class ItemsController < ApplicationController
     @items = Item.includes(:user).order(created_at: :desc)
   end
 
-  def move_to_index
-    redirect_to new_item_purchase_path unless user_signed_in?
-  end
+  # def move_to_index
+  #   redirect_to new_item_purchase_path unless user_signed_in?
+  # end
 
   def new
     @item = Item.new
@@ -26,9 +26,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
-    if @item.user != current_user
+    if @item.user != current_user.id
       redirect_to root_path, alert: "You do not have permission to edit this item."
+    elsif Purchase.where(item_id: @item.id).exists?
+      redirect_to action: :index
     end
   end
 

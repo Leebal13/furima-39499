@@ -1,2 +1,0 @@
-class Streetad < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class Phno < ApplicationRecord
-end
