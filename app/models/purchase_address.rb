@@ -22,7 +22,8 @@ class PurchaseAddress
       purchase_id: purchase.id,
       city: city,
       address_no: address_no,
-      phone_number: phone_number
+      phone_number: phone_number,
+      building_no: building_no
     )
   end
 end
