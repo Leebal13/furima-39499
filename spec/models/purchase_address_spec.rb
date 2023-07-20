@@ -32,7 +32,7 @@ RSpec.describe PurchaseAddress, type: :model do
       end
 
       it 'region_idを選択していないと保存できない' do
-        @purchase_address.region_id = 0
+        @purchase_address.region_id = 1
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Region を選択してください')
       end

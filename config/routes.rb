@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get "items/new", to: "items#new"
   
   resources :items do
-    resources :purchases
+    resources :purchases, only: [:index, :create]
   end
-
 end

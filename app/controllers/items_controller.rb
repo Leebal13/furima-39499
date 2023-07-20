@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   # before_action :move_to_index, except: [:index, :show]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
-  before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:edit, :update, :show]
 
   def index
     @items = Item.includes(:user).order(created_at: :desc)
@@ -26,25 +26,39 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.user != current_user.id
-      redirect_to root_path, alert: "You do not have permission to edit this item."
+    @item = Item.find(params[:id])
+    if @item.user == current_user.id
+      redirect_to action: :index
     elsif Purchase.where(item_id: @item.id).exists?
       redirect_to action: :index
     end
   end
 
   def destroy
-    if @item.user == current_user
-      @item.destroy
-      redirect_to root_path
-    else
-      redirect_to root_path, alert: "You do not have permission to delete this item."
-    end  
+    @item = Item.find_by(id: params[:id])
+
+  if @item.nil?
+    flash[:error] = "Item not found."
+    redirect_to root_path
+  elsif @item.user != current_user
+    flash[:error] = "You are not authorized to delete this item."
+    redirect_to root_path
+  else
+    @item.destroy
+    flash[:success] = "Item deleted successfully."
+    redirect_to root_path
+  end
+    # if @item.user == current_user
+    #   @item.destroy
+    #   redirect_to root_path
+    # else
+    #   redirect_to root_path, alert: "You do not have permission to delete this item."
+    # end  
   end
 
   def update
     if @item.update(item_params)
-      redirect_to item_path
+      redirect_to action: :show
     else
     render :edit, status: :unprocessable_entity
     end
