@@ -14,14 +14,15 @@ class Item < ApplicationRecord
 
   validates :item_name, presence: true
   validates :description, presence: true
-  validates :detail_category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :detail_condition_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :delivery_format_id, presence: true, numericality: { other_than: 1 , message: "can't be blank" }
-  validates :region_id, presence: true, numericality: { other_than: 1 , message: "can't be blank" }
-  validates :arrival_id, presence: true, numericality: { other_than: 1 , message: "can't be blank" }
+  validates :detail_category_id, presence: true, numericality: { other_than: 1, message: "空ではできない" }
+  validates :detail_condition_id, presence: true, numericality: { other_than: 1 , message: "空ではできない"}
+  validates :delivery_format_id, presence: true, numericality: { other_than: 1 , message: "空ではできない" }
+  validates :region_id, presence: true, numericality: { other_than: 1 , message: "空ではできない" }
+  validates :arrival_id, presence: true, numericality: { other_than: 1 , message: "空ではできない" }
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validate :valid_half_width_numerical_characters
   validates :image, presence: true
+  # validates :text, image, presence:true
 
   private
 
