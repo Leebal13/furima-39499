@@ -22,7 +22,7 @@ class Item < ApplicationRecord
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validate :valid_half_width_numerical_characters
   validates :image, presence: true
-  validates :text, image, presence:true
+  # validates :text, image, presence:true
 
   private
 

@@ -1,3 +1,13 @@
 ja:
   date:
     order: [year, month, day]
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "メールアドレスを入力してください。"
+            password:
+              blank: "パスワードを入力してください。"
+            # Add other attributes translations here...
