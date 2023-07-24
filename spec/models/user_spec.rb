@@ -76,21 +76,21 @@ RSpec.describe User, type: :model do
         @user.password = 'fatherlala'
         @user.password_confirmation = 'fatherlala'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password must be valid")
+        expect(@user.errors.full_messages).to include("Password 検証できない")
       end
 
       it '数字のみのパスワードでは登録できない' do
         @user.password = '123456'
         @user.password_confirmation = '123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password must be valid")
+        expect(@user.errors.full_messages).to include("Password 検証できない")
       end
 
       it '全角文字を含むパスワードでは登録できない' do
         @user.password = 'ママ'
         @user.password_confirmation = 'ママ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password must be valid")
+        expect(@user.errors.full_messages).to include("Password 検証できない")
       end
 
       it '重複したメールアドレスが存在する場合は登録できないこと' do

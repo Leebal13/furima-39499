@@ -2,7 +2,48 @@ ja:
   activerecord:
     attributes:
       user:
+        email: メールアドレス
         nickname: ニックネーム
-      tweet:
-        text: テキスト
+        encrypted_password: パスワード
+        first_name: 名前（名）
+        last_name: 名字（姓）
+        kana_first_name: 名前（名）のフリガナ
+        kana_last_name: 名字（姓）のフリガナ
+        birthdate: 生年月日
+      item:
+        item_name: 商品名
+        description: 商品の説明
+        detail_category_id: カテゴリー
+        detail_condition_id: 商品の状態
+        delivery_format_id: 配送料の負担
+        region_id: 発送元の地域
+        arrival_id: 発送までの日数
+        price: 販売価格
         image: 画像
+      address:
+        postal_code: 郵便番号
+        region_id: 都道府県
+        city: 市区町村
+        address_no: 番地
+        building_no: 建物名
+        phone_number: 電話番号
+      purchase:
+        user: ユーザー
+        item: 商品
+
+    errors:
+      models:
+        user:
+          attributes:
+            last_name:
+              invalid: "名字（姓）は全角文字で入力してください"
+            first_name:
+              invalid: "名前（名）は全角文字で入力してください"
+            kana_last_name:
+              invalid: "名字（姓）のフリガナは全角カタカナで入力してください"
+            kana_first_name:
+              invalid: "名前（名）のフリガナは全角カタカナで入力してください"
+          blank: "を入力してください"
+      messages:
+        blank: "を入力してください"
+        invalid: "が正しくありません"

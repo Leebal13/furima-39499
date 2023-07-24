@@ -98,31 +98,31 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーに「---」が選択されている場合は出品できないこと' do
         @item.detail_category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Detail category can't be blank")
+        expect(@item.errors.full_messages).to include("Detail category 空ではできない")
       end
 
       it '商品の状態に「---」が選択されている場合は出品できないこと' do
         @item.detail_condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Detail condition can't be blank")
+        expect(@item.errors.full_messages).to include("Detail condition 空ではできない")
       end
 
       it '配送料の負担に「---」が選択されている場合は出品できないこと' do
         @item.delivery_format_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery format can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery format 空ではできない")
       end
 
       it '発送元の地域に「---」が選択されている場合は出品できないこと' do
         @item.region_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Region can't be blank")
+        expect(@item.errors.full_messages).to include("Region 空ではできない")
       end
 
       it '発送までの日数に「---」が選択されている場合は出品できないこと' do
         @item.arrival_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Arrival can't be blank")
+        expect(@item.errors.full_messages).to include("Arrival 空ではできない")
       end
 
       # Add other invalid cases as needed
