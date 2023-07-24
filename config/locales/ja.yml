@@ -20,14 +20,17 @@ ja:
         arrival_id: 発送までの日数
         price: 販売価格
         image: 画像
-      address:
+
+  activemodel:
+    attributes:
+      purchase_address:
         postal_code: 郵便番号
         region_id: 都道府県
         city: 市区町村
         address_no: 番地
         building_no: 建物名
         phone_number: 電話番号
-      purchase:
+        token: トークン
         user: ユーザー
         item: 商品
 

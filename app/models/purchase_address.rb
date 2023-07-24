@@ -12,6 +12,8 @@ class PurchaseAddress
     validates :token
   end
   validates :region_id, numericality: {other_than: 1, message: 'を選択してください'}
+  validates :building_no, presence: true
+  
 
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)

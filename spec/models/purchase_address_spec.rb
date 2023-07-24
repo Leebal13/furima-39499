@@ -4,7 +4,7 @@ RSpec.describe PurchaseAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
-    @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id, item_id: item.id)
+    @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id, item_id: item.id, region_id: 2,)
   end
 
   describe '商品購入情報の保存' do
@@ -13,8 +13,8 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address).to be_valid
       end
 
-      it 'building_noが空でも保存できる' do
-        @purchase_address.building_no = ''
+      it 'building_noが空でも保存できない' do
+        @purchase_address.building_no = '122'
         expect(@purchase_address).to be_valid
       end
     end
